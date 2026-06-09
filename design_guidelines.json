@@ -1,0 +1,154 @@
+{
+  "theme": "light",
+  "archetype": "4 (Swiss & High-Contrast)",
+  "design_philosophy": "Neo-Brutalism meets Modern Digital Agency. High contrast, bold typography, stark black-and-white base with a vivid Signal Red (#FF3333) used STRICTLY for primary CTAs to drive conversion. Asymmetric layouts break the generic tech-template feel, creating visual tension while focusing on 'Web Development' as the massive flagship service. Muted tones are used for secondary services to enforce stark hierarchy.",
+  "colors": {
+    "background": "#FAFAFA",
+    "foreground": "#0A0A0A",
+    "primary": "#FF3333",
+    "primary_foreground": "#FFFFFF",
+    "secondary": "#E5E5E5",
+    "secondary_foreground": "#0A0A0A",
+    "muted": "#F5F5F5",
+    "muted_foreground": "#737373",
+    "accent": "#FF3333",
+    "border": "#0A0A0A"
+  },
+  "typography": {
+    "headings": {
+      "font_family": "Cabinet Grotesk, sans-serif",
+      "weight": "font-black",
+      "tracking": "tracking-tighter"
+    },
+    "body": {
+      "font_family": "Satoshi, Inter, sans-serif",
+      "weight": "font-medium",
+      "tracking": "tracking-normal"
+    },
+    "h1": "text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter leading-[1.1]",
+    "h2": "text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight",
+    "h3": "text-xl sm:text-2xl font-bold tracking-tight",
+    "body_text": "text-base md:text-lg text-foreground/80 leading-relaxed"
+  },
+  "layout_and_spacing": {
+    "spacing_system": "Generous. Use py-24 or py-32 for section padding. Containers must have internal padding (p-8 to p-12).",
+    "container": "max-w-7xl mx-auto px-6 md:px-12",
+    "grid_modes": {
+      "hero": "Asymmetric text-heavy block vs negative space.",
+      "services": "Bento 'Tetris' grid. 1 massive card for Custom Web Dev (col-span-full md:col-span-8 row-span-2) and 3 smaller cards (md:col-span-4).",
+      "portfolio": "Horizontal scrolling layout or asymmetric overlapping masonry.",
+      "process": "Grid cols-1 md:grid-cols-4 with technical grid borders (border-r border-b)."
+    }
+  },
+  "surfaces": {
+    "cards": "Sharp corners (rounded-none), flat solid backgrounds, stark 1px or 2px black borders. Use hard drop shadows (shadow-[4px_4px_0px_0px_#0a0a0a]) for a neo-brutalist tactile feel.",
+    "buttons": {
+      "primary": "bg-[#FF3333] text-white rounded-none px-8 py-4 font-bold hover:bg-[#E60000] border-2 border-transparent transition-all hover:shadow-[4px_4px_0px_0px_#0a0a0a]",
+      "secondary": "bg-transparent text-foreground border-2 border-foreground rounded-none px-8 py-4 font-bold hover:bg-foreground hover:text-white transition-all",
+      "whatsapp": "bg-[#25D366] text-white rounded-none px-8 py-4 font-bold hover:bg-[#1DA851] border-2 border-transparent transition-all hover:shadow-[4px_4px_0px_0px_#0a0a0a]"
+    }
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "description": "High-impact typographic hero with dual CTAs.",
+      "content": {
+        "h1": "We Build Websites That Work. (And Market Them So People See Them.)",
+        "subheadline": "Fast, custom-designed websites converting clicks into clients.",
+        "primary_cta": "View Our Website Portfolio",
+        "secondary_cta": "Book a Free Discovery Call"
+      }
+    },
+    {
+      "id": "social_proof",
+      "description": "Stark horizontal bar, grid-border style.",
+      "content": [
+        "Trusted by 50+ Scaling Brands",
+        "100+ Projects Delivered",
+        "5+ Years Building Digital Solutions"
+      ]
+    },
+    {
+      "id": "services",
+      "description": "Featured Bento Layout breaking symmetrical grids.",
+      "content": {
+        "headline": "Everything You Need to Grow Online. Starting with a Great Website.",
+        "cards": [
+          {
+            "title": "Custom Website Development",
+            "type": "featured",
+            "description": "Flagship service. Full-width or large span card.",
+            "image": "media.service_web_dev_mockup"
+          },
+          {
+            "title": "App Development",
+            "type": "secondary",
+            "description": "Muted tone card."
+          },
+          {
+            "title": "Ads Campaign Management",
+            "type": "secondary",
+            "description": "20% flat fee. Muted tone card."
+          },
+          {
+            "title": "Social Media Management",
+            "type": "secondary",
+            "description": "₹7,999/month. Muted tone card."
+          }
+        ]
+      }
+    },
+    {
+      "id": "portfolio",
+      "description": "3-4 interactive scrolling mockups.",
+      "content": {
+        "headline": "Don't Just Take Our Word For It. See What We've Built.",
+        "cta": "Browse Full Interactive Portfolio"
+      }
+    },
+    {
+      "id": "process",
+      "description": "4-Step Timeline.",
+      "content": {
+        "headline": "How We Take Your Project From Vision to Launch",
+        "steps": [
+          "1. Discovery",
+          "2. Strategy & Scope",
+          "3. Build & Execute",
+          "4. Review & Grow"
+        ]
+      }
+    },
+    {
+      "id": "cta_whatsapp",
+      "description": "Final CTA.",
+      "content": {
+        "headline": "Ready for a Website That Actually Grows Your Business?",
+        "cta": "Start a WhatsApp Conversation"
+      }
+    }
+  ],
+  "media": {
+    "hero_texture_bg": "https://images.unsplash.com/photo-1486551937199-baf066858de7",
+    "service_web_dev_mockup": "https://images.unsplash.com/photo-1634084462412-b54873c0a56d",
+    "portfolio_1": "https://images.unsplash.com/photo-1487014679447-9f8336841d58",
+    "portfolio_2": "https://images.unsplash.com/photo-1558655146-d09347e92766",
+    "portfolio_3": "https://images.unsplash.com/photo-1519222970733-f546218fa6d7",
+    "process_bg": "https://images.unsplash.com/photo-1557804506-669a67965ba0"
+  },
+  "animation_motion": {
+    "hover": "Tactile interactions. Elements shift up slightly (-translate-y-1) and reveal hard drop shadows.",
+    "entrance": "Staggered fade-in-up (Framer Motion) for grid items and portfolio cards."
+  },
+  "icons": "lucide-react",
+  "instructions_to_main_agent": [
+    "Ensure layout is intentionally asymmetric, especially in the services section.",
+    "Use Cabinet Grotesk for headings and Satoshi for body (import via Google Fonts/Fontshare).",
+    "Primary CTA buttons MUST use the exact Primary color (#FF3333). Keep secondary services visually muted (gray/off-white backgrounds).",
+    "DO NOT use soft drop shadows (no shadow-lg). Use sharp borders and solid offset shadows (shadow-[4px_4px_0px_0px_#0a0a0a]) for a neo-brutalist aesthetic.",
+    "ALL interactive elements MUST include a data-testid attribute in kebab-case based on their role.",
+    "Never use placehold.it or dummyimage URLs. Only use the provided media URLs.",
+    "Build strictly with Tailwind CSS and raw HTML/divs for complex asymmetric layouts rather than rigid Shadcn cards.",
+    "Include the WhatsApp button with the recognizable WhatsApp green color where appropriate."
+  ]
+}
