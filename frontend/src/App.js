@@ -1,38 +1,36 @@
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Navbar } from "@/components/landing/Navbar";
-import { IntroLoader } from "@/components/landing/IntroLoader";
-import { Hero } from "@/components/landing/Hero";
-import { SocialProofBar } from "@/components/landing/SocialProofBar";
-import { Services } from "@/components/landing/Services";
-import { Portfolio } from "@/components/landing/Portfolio";
-import { Process } from "@/components/landing/Process";
-import { FinalCTA } from "@/components/landing/FinalCTA";
 import { Footer } from "@/components/landing/Footer";
+import Home from "@/pages/Home";
+import ServicesPage from "@/pages/ServicesPage";
+import WorkPage from "@/pages/WorkPage";
+import ProcessPage from "@/pages/ProcessPage";
 
-const Landing = () => (
-  <div className="bg-[#FAFAFA] text-[#0A0A0A]">
-    <IntroLoader />
-    <Navbar />
-    <main id="main-content">
-      <Hero />
-      <SocialProofBar />
-      <Services />
-      <Portfolio />
-      <Process />
-      <FinalCTA />
-    </main>
-    <Footer />
-  </div>
-);
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-[#FAFAFA] text-[#0A0A0A]">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-        </Routes>
+        <ScrollToTop />
+        <Navbar />
+        <main id="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/work" element={<WorkPage />} />
+            <Route path="/process" element={<ProcessPage />} />
+          </Routes>
+        </main>
+        <Footer />
       </BrowserRouter>
     </div>
   );

@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { SITE } from "@/constants/site";
 
 const links = [
-  { label: "Services", href: "#services" },
-  { label: "Work", href: "#portfolio" },
-  { label: "Process", href: "#process" },
+  { label: "Services", to: "/services" },
+  { label: "Work", to: "/work" },
+  { label: "Process", to: "/process" },
 ];
 
 export const Navbar = () => {
@@ -14,20 +15,24 @@ export const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12">
-        <a href="#main-content" data-testid="nav-logo" className="font-logo text-2xl tracking-wide">
+        <Link to="/" data-testid="nav-logo" className="font-logo text-2xl tracking-wide">
           SHYARA<span className="text-[#FF3333]">.</span>
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-10 md:flex">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
+            <NavLink
+              key={l.to}
+              to={l.to}
               data-testid={`nav-link-${l.label.toLowerCase()}`}
-              className="text-sm font-bold uppercase tracking-wide transition-colors hover:text-[#FF3333]"
+              className={({ isActive }) =>
+                `text-sm font-bold uppercase tracking-wide transition-colors hover:text-[#FF3333] ${
+                  isActive ? "text-[#FF3333]" : ""
+                }`
+              }
             >
               {l.label}
-            </a>
+            </NavLink>
           ))}
           <a
             href={SITE.whatsappUrl}
@@ -53,14 +58,16 @@ export const Navbar = () => {
       {open && (
         <nav data-testid="nav-mobile-menu" className="border-t-2 border-[#0A0A0A] bg-[#FAFAFA] px-6 pb-6 pt-4 md:hidden">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
+            <NavLink
+              key={l.to}
+              to={l.to}
               onClick={() => setOpen(false)}
-              className="block py-3 text-base font-bold uppercase tracking-wide"
+              className={({ isActive }) =>
+                `block py-3 text-base font-bold uppercase tracking-wide ${isActive ? "text-[#FF3333]" : ""}`
+              }
             >
               {l.label}
-            </a>
+            </NavLink>
           ))}
           <a
             href={SITE.whatsappUrl}

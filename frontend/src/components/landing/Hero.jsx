@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { ArrowRight, MessageCircle, Phone, TrendingUp } from "lucide-react";
 import { SITE } from "@/constants/site";
 
@@ -13,15 +14,9 @@ const ticker = [
 ];
 
 const EASE = [0.22, 1, 0.36, 1];
-const BASE = 2.75; // hero starts after the intro logo has zoomed fully out of the screen
+const INTRO_KEY = "shyara-intro-shown";
 
-const rise = (delay, x = 0, y = 30) => ({
-  initial: { opacity: 0, x, y },
-  animate: { opacity: 1, x: 0, y: 0 },
-  transition: { duration: 0.6, delay: BASE + delay, ease: EASE },
-});
-
-const Word = ({ children, delay, className = "" }) => (
+const Word = ({ children, base, delay, className = "" }) => (
   <span
     className="inline-block overflow-hidden align-bottom"
     style={{ padding: "0.12em 0.08em", margin: "-0.12em -0.08em" }}
@@ -29,7 +24,7 @@ const Word = ({ children, delay, className = "" }) => (
     <motion.span
       initial={{ y: "115%" }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.75, delay: BASE + delay, ease: EASE }}
+      transition={{ duration: 0.75, delay: base + delay, ease: EASE }}
       className={`inline-block ${className}`}
     >
       {children}
@@ -37,7 +32,17 @@ const Word = ({ children, delay, className = "" }) => (
   </span>
 );
 
-export const Hero = () => (
+export const Hero = () => {
+  // Wait for the intro zoom on first load; start right away when the intro is skipped
+  const BASE = sessionStorage.getItem(INTRO_KEY) ? 0.15 : 2.75;
+
+  const rise = (delay, x = 0, y = 30) => ({
+    initial: { opacity: 0, x, y },
+    animate: { opacity: 1, x: 0, y: 0 },
+    transition: { duration: 0.6, delay: BASE + delay, ease: EASE },
+  });
+
+  return (
   <section className="relative overflow-hidden">
     <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 pb-20 pt-14 md:grid-cols-12 md:px-12 md:pb-24 md:pt-20">
       {/* ===== Copy ===== */}
@@ -54,11 +59,11 @@ export const Hero = () => (
           data-testid="hero-headline"
           className="font-heading text-4xl font-black leading-[1.05] tracking-tighter sm:text-5xl lg:text-6xl"
         >
-          <Word delay={0.08}>We</Word> <Word delay={0.14}>Build</Word>{" "}
-          <Word delay={0.2}>Websites</Word>
+          <Word base={BASE} delay={0.08}>We</Word> <Word base={BASE} delay={0.14}>Build</Word>{" "}
+          <Word base={BASE} delay={0.2}>Websites</Word>
           <br />
-          <Word delay={0.28}>That</Word>{" "}
-          <Word delay={0.34} className="text-[#FF3333]">
+          <Word base={BASE} delay={0.28}>That</Word>{" "}
+          <Word base={BASE} delay={0.34} className="text-[#FF3333]">
             Work.
           </Word>
         </h1>
@@ -178,4 +183,5 @@ export const Hero = () => (
       </div>
     </motion.div>
   </section>
-);
+  );
+};

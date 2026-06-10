@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 export const IntroLoader = () => {
-  const [done, setDone] = useState(false);
+  const [done, setDone] = useState(() => !!sessionStorage.getItem("shyara-intro-shown"));
   const [fontReady, setFontReady] = useState(false);
 
   useEffect(() => {
@@ -24,7 +24,10 @@ export const IntroLoader = () => {
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ duration: 0.5, delay: 2.4, ease: "easeOut" }}
-      onAnimationComplete={() => setDone(true)}
+      onAnimationComplete={() => {
+        sessionStorage.setItem("shyara-intro-shown", "1");
+        setDone(true);
+      }}
       className="pointer-events-none fixed inset-0 z-[100] flex items-center justify-center bg-[#0A0A0A]"
     >
       {fontReady && (
