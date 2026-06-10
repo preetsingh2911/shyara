@@ -84,7 +84,7 @@ export const ScrollTimeline = ({ steps }) => {
                 <span
                   className={`block h-5 w-5 rotate-45 border-2 border-[#0A0A0A] transition-all duration-500 ${
                     isActive
-                      ? "scale-125 bg-[#FF3333] shadow-[3px_3px_0px_0px_#0a0a0a]"
+                      ? "scale-125 bg-[#FF3333]"
                       : "bg-white"
                   }`}
                 />

@@ -13,7 +13,7 @@ const ticker = [
 ];
 
 const EASE = [0.22, 1, 0.36, 1];
-const BASE = 1.15; // hero starts right after the intro curtain lifts
+const BASE = 2.1; // hero starts right after the intro curtain lifts
 
 const rise = (delay) => ({
   initial: { opacity: 0, y: 30 },
