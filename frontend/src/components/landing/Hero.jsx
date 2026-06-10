@@ -13,7 +13,7 @@ const ticker = [
 ];
 
 const EASE = [0.22, 1, 0.36, 1];
-const BASE = 2.15; // hero starts as the intro logo zooms through the screen
+const BASE = 2.75; // hero starts after the intro logo has zoomed fully out of the screen
 
 const rise = (delay, x = 0, y = 30) => ({
   initial: { opacity: 0, x, y },
