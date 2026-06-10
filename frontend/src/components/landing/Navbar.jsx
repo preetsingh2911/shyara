@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { SITE } from "@/constants/site";
 
@@ -27,6 +27,22 @@ const RollingText = ({ text }) => (
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const wordRef = useRef(null);
+  const [wordWidth, setWordWidth] = useState(90);
+
+  // Measure the "HYARA" width once the brand font is ready
+  useEffect(() => {
+    document.fonts.ready.then(() => {
+      if (wordRef.current) setWordWidth(wordRef.current.scrollWidth);
+    });
+  }, []);
+
+  // Smooth, scroll-linked collapse of the wordmark
+  const { scrollY } = useScroll();
+  const rawWidth = useTransform(scrollY, [20, 160], [wordWidth, 0]);
+  const rawOpacity = useTransform(scrollY, [20, 130], [1, 0]);
+  const width = useSpring(rawWidth, { stiffness: 260, damping: 34 });
+  const opacity = useSpring(rawOpacity, { stiffness: 260, damping: 34 });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -43,14 +59,10 @@ export const Navbar = () => {
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         className="flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-[#0A0A0A]/90 py-3 pl-5 pr-4 backdrop-blur-md md:justify-start md:gap-1 md:pr-5"
       >
-        <Link to="/" data-testid="nav-logo" className="flex items-baseline font-logo text-xl leading-none text-white">
+        <Link to="/" data-testid="nav-logo" className="flex items-baseline font-logo text-xl font-bold leading-none text-white">
           <span>S</span>
-          <motion.span
-            animate={{ width: scrolled ? 0 : "auto", opacity: scrolled ? 0 : 1 }}
-            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-block overflow-hidden whitespace-nowrap"
-          >
-            HYARA
+          <motion.span style={{ width, opacity }} className="inline-block overflow-hidden whitespace-nowrap">
+            <span ref={wordRef} className="inline-block">HYARA</span>
           </motion.span>
           <span className="text-[#FF3333]">.</span>
         </Link>
