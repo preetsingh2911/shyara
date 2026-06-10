@@ -21,14 +21,20 @@ export const IntroLoader = () => {
   return (
     <motion.div
       data-testid="intro-loader"
-      initial={{ y: 0 }}
-      animate={{ y: "-100%" }}
-      transition={{ duration: 0.7, delay: 1.9, ease: [0.76, 0, 0.24, 1] }}
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 0 }}
+      transition={{ duration: 0.6, delay: 2.2, ease: "easeOut" }}
       onAnimationComplete={() => setDone(true)}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0A0A0A]"
+      className="pointer-events-none fixed inset-0 z-[100] flex items-center justify-center bg-[#0A0A0A]"
     >
       {fontReady && (
-        <svg viewBox="0 0 360 120" className="w-[280px] sm:w-[360px]" aria-label="Shyara">
+        <motion.div
+          initial={{ scale: 1, opacity: 1 }}
+          animate={{ scale: 11, opacity: 0 }}
+          transition={{ duration: 0.85, delay: 2.0, ease: [0.64, 0, 0.78, 0] }}
+          className="w-[280px] sm:w-[360px]"
+        >
+          <svg viewBox="0 0 360 120" className="w-full" aria-label="Shyara">
           <motion.text
             x="180"
             y="60"
@@ -52,7 +58,8 @@ export const IntroLoader = () => {
               .
             </tspan>
           </motion.text>
-        </svg>
+          </svg>
+        </motion.div>
       )}
     </motion.div>
   );

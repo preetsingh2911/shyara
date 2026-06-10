@@ -13,11 +13,11 @@ const ticker = [
 ];
 
 const EASE = [0.22, 1, 0.36, 1];
-const BASE = 2.1; // hero starts right after the intro curtain lifts
+const BASE = 2.15; // hero starts as the intro logo zooms through the screen
 
-const rise = (delay) => ({
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
+const rise = (delay, x = 0, y = 30) => ({
+  initial: { opacity: 0, x, y },
+  animate: { opacity: 1, x: 0, y: 0 },
   transition: { duration: 0.6, delay: BASE + delay, ease: EASE },
 });
 
@@ -40,7 +40,7 @@ export const Hero = () => (
       {/* ===== Copy ===== */}
       <div className="md:col-span-7">
         <motion.p
-          {...rise(0)}
+          {...rise(0.05, -50, 0)}
           data-testid="hero-badge"
           className="mb-6 inline-block border-2 border-[#0A0A0A] bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em]"
         >
@@ -92,9 +92,9 @@ export const Hero = () => (
 
       {/* ===== Visual ===== */}
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: BASE + 0.45, ease: EASE }}
+        initial={{ opacity: 0, x: 70 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: BASE + 0.35, ease: EASE }}
         data-testid="hero-visual"
         className="relative hidden md:col-span-5 md:block"
       >
@@ -158,7 +158,13 @@ export const Hero = () => (
     </div>
 
     {/* Ticker strip */}
-    <div className="overflow-hidden border-y-2 border-[#0A0A0A] bg-white py-3" data-testid="hero-ticker">
+    <motion.div
+      initial={{ opacity: 0, y: 28 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: BASE + 0.65, ease: EASE }}
+      className="overflow-hidden border-y-2 border-[#0A0A0A] bg-white py-3"
+      data-testid="hero-ticker"
+    >
       <div className="animate-marquee flex w-max whitespace-nowrap">
         {[...ticker, ...ticker].map((item, i) => (
           <span key={i} className="flex items-center text-sm font-bold uppercase tracking-widest">
@@ -167,6 +173,6 @@ export const Hero = () => (
           </span>
         ))}
       </div>
-    </div>
+    </motion.div>
   </section>
 );
