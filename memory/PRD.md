@@ -17,7 +17,7 @@ Redesign the landing page at https://marketing.shyara.co.in/ to position **websi
 - Backend: untouched template, not called by frontend
 
 ## Implemented (June 2026)
-- Hero with new H1, sub-headline, dual CTAs (portfolio scroll + WhatsApp discovery call), marquee ticker
+- Hero: intro curtain animation (black "SHYARA." overlay lifts on load), word-by-word headline reveal, trimmed copy, split layout with browser mockup visual + floating stat/WhatsApp enquiry badges + rotating accent (IntroLoader.jsx, Hero.jsx); marquee ticker, dual CTAs
 - Black social proof bar: 50+ brands | 100+ projects | 5+ years
 - Services: featured full-width web dev card (mockup image, hard shadow) + 3 muted secondary cards (App Dev, Ads 20% flat fee, Social ₹7,999/mo)
 - Portfolio: 3 browser-chrome mockup cards with scroll-on-hover effect, asymmetric offset, CTA to full portfolio

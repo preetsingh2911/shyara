@@ -1,6 +1,7 @@
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "@/components/landing/Navbar";
+import { IntroLoader } from "@/components/landing/IntroLoader";
 import { Hero } from "@/components/landing/Hero";
 import { SocialProofBar } from "@/components/landing/SocialProofBar";
 import { Services } from "@/components/landing/Services";
@@ -11,6 +12,7 @@ import { Footer } from "@/components/landing/Footer";
 
 const Landing = () => (
   <div className="bg-[#FAFAFA] text-[#0A0A0A]">
+    <IntroLoader />
     <Navbar />
     <main id="main-content">
       <Hero />

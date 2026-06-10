@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, MessageCircle, Phone, TrendingUp } from "lucide-react";
 import { SITE } from "@/constants/site";
 
 const ticker = [
@@ -12,69 +12,151 @@ const ticker = [
   "App Development",
 ];
 
+const EASE = [0.22, 1, 0.36, 1];
+const BASE = 1.15; // hero starts right after the intro curtain lifts
+
+const rise = (delay) => ({
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, delay: BASE + delay, ease: EASE },
+});
+
+const Word = ({ children, delay, className = "" }) => (
+  <span className="inline-block overflow-hidden align-bottom">
+    <motion.span
+      initial={{ y: "115%" }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.75, delay: BASE + delay, ease: EASE }}
+      className={`inline-block ${className}`}
+    >
+      {children}
+    </motion.span>
+  </span>
+);
+
 export const Hero = () => (
   <section className="relative overflow-hidden">
-    <div className="mx-auto max-w-7xl px-6 pb-20 pt-16 md:px-12 md:pb-28 md:pt-24">
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="mb-6 inline-block border-2 border-[#0A0A0A] bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em]"
-        data-testid="hero-badge"
-      >
-        Web Development Studio + Growth Marketing
-      </motion.p>
+    <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 pb-20 pt-14 md:grid-cols-12 md:px-12 md:pb-24 md:pt-20">
+      {/* ===== Copy ===== */}
+      <div className="md:col-span-7">
+        <motion.p
+          {...rise(0)}
+          data-testid="hero-badge"
+          className="mb-6 inline-block border-2 border-[#0A0A0A] bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em]"
+        >
+          Web Development Studio + Growth Marketing
+        </motion.p>
 
-      <motion.h1
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        data-testid="hero-headline"
-        className="font-heading max-w-5xl text-4xl font-black leading-[1.05] tracking-tighter sm:text-5xl lg:text-6xl"
-      >
-        We Build Websites
-        <br />
-        That <span className="text-[#FF3333]">Work.</span>
-        <span className="mt-3 block text-xl font-bold tracking-tight text-[#0A0A0A]/60 sm:text-2xl lg:text-3xl">
-          (And Market Them So People See Them.)
-        </span>
-      </motion.h1>
+        <h1
+          data-testid="hero-headline"
+          className="font-heading text-4xl font-black leading-[1.05] tracking-tighter sm:text-5xl lg:text-6xl"
+        >
+          <Word delay={0.08}>We</Word> <Word delay={0.14}>Build</Word>{" "}
+          <Word delay={0.2}>Websites</Word>
+          <br />
+          <Word delay={0.28}>That</Word>{" "}
+          <Word delay={0.34} className="text-[#FF3333]">
+            Work.
+          </Word>
+          <span className="mt-3 block text-lg font-bold tracking-tight text-[#0A0A0A]/50 sm:text-xl">
+            <Word delay={0.42}>(And Market Them So People See Them.)</Word>
+          </span>
+        </h1>
 
-      <motion.p
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        data-testid="hero-subheadline"
-        className="mt-8 max-w-2xl text-base leading-relaxed text-[#0A0A0A]/70 md:text-lg"
-      >
-        Fast, custom-designed websites tailored to convert clicks into clients.
-        Once your digital storefront is perfect, our targeted ads and social
-        media management drive the traffic you need to scale.
-      </motion.p>
+        <motion.p
+          {...rise(0.5)}
+          data-testid="hero-subheadline"
+          className="mt-6 max-w-md text-base leading-relaxed text-[#0A0A0A]/70 md:text-lg"
+        >
+          Fast, conversion-focused websites — backed by the ads and social
+          media that send traffic their way.
+        </motion.p>
 
+        <motion.div {...rise(0.6)} className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
+          <a
+            href="#portfolio"
+            data-testid="hero-primary-cta"
+            className="group inline-flex items-center justify-center gap-2 whitespace-nowrap border-2 border-[#0A0A0A] bg-[#FF3333] px-8 py-4 font-bold uppercase tracking-wide text-white transition-all hover:-translate-y-1 hover:shadow-[5px_5px_0px_0px_#0a0a0a]"
+          >
+            View Our Website Portfolio
+            <ArrowRight size={18} strokeWidth={2.5} className="transition-transform group-hover:translate-x-1" />
+          </a>
+          <a
+            href={SITE.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="hero-secondary-cta"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap border-2 border-[#0A0A0A] bg-transparent px-8 py-4 font-bold uppercase tracking-wide transition-all hover:bg-[#0A0A0A] hover:text-white"
+          >
+            <Phone size={18} strokeWidth={2.5} /> Book a Free Discovery Call
+          </a>
+        </motion.div>
+      </div>
+
+      {/* ===== Visual ===== */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
+        transition={{ duration: 0.8, delay: BASE + 0.45, ease: EASE }}
+        data-testid="hero-visual"
+        className="relative hidden md:col-span-5 md:block"
       >
-        <a
-          href="#portfolio"
-          data-testid="hero-primary-cta"
-          className="group inline-flex items-center justify-center gap-2 border-2 border-[#0A0A0A] bg-[#FF3333] px-8 py-4 font-bold uppercase tracking-wide text-white transition-all hover:-translate-y-1 hover:shadow-[5px_5px_0px_0px_#0a0a0a]"
+        {/* Rotating accent */}
+        <motion.span
+          aria-hidden="true"
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 16, ease: "linear" }}
+          className="absolute -left-10 -top-12 z-0 text-7xl font-black text-[#FF3333]"
         >
-          View Our Website Portfolio
-          <ArrowRight size={18} strokeWidth={2.5} className="transition-transform group-hover:translate-x-1" />
-        </a>
-        <a
-          href={SITE.whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-testid="hero-secondary-cta"
-          className="inline-flex items-center justify-center gap-2 border-2 border-[#0A0A0A] bg-transparent px-8 py-4 font-bold uppercase tracking-wide transition-all hover:bg-[#0A0A0A] hover:text-white"
+          ✱
+        </motion.span>
+
+        {/* Browser mockup */}
+        <div className="relative z-10 border-2 border-[#0A0A0A] bg-white shadow-[10px_10px_0px_0px_#FF3333]">
+          <div className="flex items-center gap-1.5 border-b-2 border-[#0A0A0A] bg-[#F5F5F5] px-4 py-2.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
+            <span className="ml-3 flex-1 bg-white px-3 py-0.5 text-[10px] font-bold uppercase tracking-widest text-[#0A0A0A]/40">
+              yourbusiness.in
+            </span>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200&auto=format&fit=crop"
+            alt="Website design preview"
+            className="h-[340px] w-full object-cover"
+          />
+        </div>
+
+        {/* Floating stat badge */}
+        <motion.div
+          animate={{ y: [0, -10, 0] }}
+          transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
+          data-testid="hero-float-stat"
+          className="absolute -right-5 -top-7 z-20 flex items-center gap-3 border-2 border-[#0A0A0A] bg-[#0A0A0A] px-4 py-3 text-white"
         >
-          <Phone size={18} strokeWidth={2.5} /> Book a Free Discovery Call
-        </a>
+          <TrendingUp size={22} strokeWidth={2.5} className="text-[#FF3333]" />
+          <div>
+            <p className="font-heading text-lg font-black leading-none">+128%</p>
+            <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-white/60">Avg. Client Traffic</p>
+          </div>
+        </motion.div>
+
+        {/* Floating WhatsApp enquiry */}
+        <motion.div
+          animate={{ y: [0, 9, 0] }}
+          transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 0.8 }}
+          data-testid="hero-float-enquiry"
+          className="absolute -bottom-8 -left-7 z-20 flex items-center gap-3 border-2 border-[#0A0A0A] bg-white px-4 py-3 shadow-[4px_4px_0px_0px_#0a0a0a]"
+        >
+          <span className="flex h-9 w-9 items-center justify-center bg-[#25D366]">
+            <MessageCircle size={18} strokeWidth={2.5} className="text-white" />
+          </span>
+          <div>
+            <p className="text-xs font-black uppercase tracking-wide">New Enquiry</p>
+            <p className="text-[11px] text-[#0A0A0A]/50">"Need a website for my clinic"</p>
+          </div>
+        </motion.div>
       </motion.div>
     </div>
 
