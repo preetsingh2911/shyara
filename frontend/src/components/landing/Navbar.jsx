@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
-import { Menu, X, MessageCircle } from "lucide-react";
 import { SITE } from "@/constants/site";
 
 const links = [
@@ -25,7 +24,6 @@ const RollingText = ({ text }) => (
 );
 
 export const Navbar = () => {
-  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const wordRef = useRef(null);
   const [wordWidth, setWordWidth] = useState(90);
@@ -57,11 +55,19 @@ export const Navbar = () => {
         initial={{ y: -90, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-        className="flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-[#0A0A0A]/90 py-3 pl-5 pr-4 backdrop-blur-md md:justify-start md:gap-1 md:pr-5"
+        className="flex items-center justify-between rounded-xl border border-white/10 bg-[#0A0A0A]/90 py-2.5 pl-4 pr-2 backdrop-blur-md md:justify-start md:gap-1 md:py-3 md:pl-5 md:pr-5"
       >
-        <Link to="/" data-testid="nav-logo" className="flex items-baseline font-logo text-xl font-bold leading-none text-white">
+        <Link
+          to="/"
+          data-testid="nav-logo"
+          className="flex items-baseline font-logo text-lg font-bold text-white md:text-xl"
+          style={{ lineHeight: 1.2 }}
+        >
           <span>S</span>
-          <motion.span style={{ width, opacity }} className="inline-block overflow-hidden whitespace-nowrap">
+          <motion.span
+            style={{ width, opacity, paddingTop: "0.35em", marginTop: "-0.35em" }}
+            className="inline-block overflow-hidden whitespace-nowrap"
+          >
             <span ref={wordRef} className="inline-block">HYARA</span>
           </motion.span>
           <span className="text-[#FF3333]">.</span>
@@ -69,14 +75,14 @@ export const Navbar = () => {
 
         <span className="mx-3 hidden h-5 w-px bg-white/20 md:block" />
 
-        <nav className="hidden items-center md:flex">
+        <nav className="flex items-center">
           {links.map((l) => (
             <NavLink
               key={l.to}
               to={l.to}
               data-testid={`nav-link-${l.label.toLowerCase()}`}
               className={({ isActive }) =>
-                `group px-4 text-[13px] font-bold uppercase tracking-wide ${
+                `group px-2.5 text-[11px] font-bold uppercase tracking-wide md:px-4 md:text-[13px] ${
                   isActive ? "text-[#FF3333]" : "text-white"
                 }`
               }
@@ -89,25 +95,16 @@ export const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
             data-testid="nav-whatsapp-btn"
-            className="group px-4 text-[13px] font-bold uppercase tracking-wide text-white"
+            className="group px-2.5 text-[11px] font-bold uppercase tracking-wide text-white md:px-4 md:text-[13px]"
           >
             <RollingText text="Contact" />
           </a>
         </nav>
-
-        <button
-          data-testid="nav-mobile-toggle"
-          className="text-white md:hidden"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
       </motion.header>
 
       {/* CTA pill appears on scroll, Breaker-style */}
       <AnimatePresence>
-        {scrolled && !open && (
+        {scrolled && (
           <motion.a
             key="nav-cta-pill"
             href={SITE.whatsappUrl}
@@ -123,45 +120,6 @@ export const Navbar = () => {
             <span className="h-2 w-2 rounded-full bg-[#25D366]" />
             Start a Project
           </motion.a>
-        )}
-      </AnimatePresence>
-
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {open && (
-          <motion.nav
-            key="mobile-menu"
-            data-testid="nav-mobile-menu"
-            initial={{ y: -10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -10, opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="mt-2 rounded-xl border border-white/10 bg-[#0A0A0A]/95 px-6 pb-6 pt-3 backdrop-blur-md md:hidden"
-          >
-            {links.map((l) => (
-              <NavLink
-                key={l.to}
-                to={l.to}
-                onClick={() => setOpen(false)}
-                className={({ isActive }) =>
-                  `block py-3 text-base font-bold uppercase tracking-wide text-white ${
-                    isActive ? "text-[#FF3333]" : ""
-                  }`
-                }
-              >
-                {l.label}
-              </NavLink>
-            ))}
-            <a
-              href={SITE.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-testid="nav-mobile-whatsapp-btn"
-              className="mt-3 inline-flex items-center gap-2 rounded-lg bg-[#FF3333] px-5 py-3 text-sm font-bold uppercase text-white"
-            >
-              <MessageCircle size={16} strokeWidth={2.5} /> Contact Us
-            </a>
-          </motion.nav>
         )}
       </AnimatePresence>
     </div>
