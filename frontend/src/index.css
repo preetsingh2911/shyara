@@ -36,6 +36,13 @@ body {
     color: #ffffff;
 }
 
+/* Red text gets the inverse: black highlight */
+[class*="text-[#FF3333]"]::selection,
+[class*="text-[#FF3333]"] *::selection {
+    background: #0a0a0a;
+    color: #ff3333;
+}
+
 @layer base {
     :root {
         --background: 0 0% 98%;

@@ -22,7 +22,10 @@ const rise = (delay, x = 0, y = 30) => ({
 });
 
 const Word = ({ children, delay, className = "" }) => (
-  <span className="inline-block overflow-hidden align-bottom">
+  <span
+    className="inline-block overflow-hidden align-bottom"
+    style={{ padding: "0.12em 0.08em", margin: "-0.12em -0.08em" }}
+  >
     <motion.span
       initial={{ y: "115%" }}
       animate={{ y: 0 }}
