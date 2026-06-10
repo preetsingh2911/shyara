@@ -58,7 +58,7 @@ export const Services = () => (
           </h3>
           <p className="mt-5 leading-relaxed text-[#0A0A0A]/70">
             From basic landing pages to premium, highly functional web builds.
-            We design fast, responsive websites built to convert — delivered
+            We design fast, responsive websites built to convert, delivered
             with clear timelines and transparent pricing.
           </p>
           <ul className="mt-6 space-y-2 text-sm font-bold uppercase tracking-wide">

@@ -133,7 +133,7 @@ export const ScrollTimeline = ({ steps }) => {
           return (
             <div key={s.title} className="relative pb-12 last:pb-0">
               <span
-                className={`absolute -left-[46px] top-1 block h-5 w-5 rotate-45 border-2 border-[#0A0A0A] transition-all duration-500 ${
+                className={`absolute left-[calc(10.5px_-_3rem)] top-1 block h-5 w-5 -translate-x-1/2 rotate-45 border-2 border-[#0A0A0A] transition-all duration-500 ${
                   isActive ? "scale-110 bg-[#FF3333]" : "bg-white"
                 }`}
               />

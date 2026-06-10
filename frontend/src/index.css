@@ -4,6 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "Tan Paradiso";
+    src: url("./fonts/TAN-PARADISO.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -17,6 +25,10 @@ body {
 
 .font-heading {
     font-family: "Cabinet Grotesk", sans-serif;
+}
+
+.font-logo {
+    font-family: "Tan Paradiso", "Cabinet Grotesk", sans-serif;
 }
 
 ::selection {

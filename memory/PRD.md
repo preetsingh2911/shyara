@@ -13,7 +13,7 @@ Redesign the landing page at https://marketing.shyara.co.in/ to position **websi
 - React (CRA + craco), Tailwind, framer-motion, lucide-react
 - Single route `/` in `App.js`; components in `/app/frontend/src/components/landing/` (Navbar, Hero, SocialProofBar, Services, Portfolio, Process, FinalCTA, Footer)
 - Contact constants in `/app/frontend/src/constants/site.js`
-- Fonts: Cabinet Grotesk (headings) + Satoshi (body) via Fontshare
+- Fonts: Cabinet Grotesk (headings) + Satoshi (body) via Fontshare; TAN Paradiso (custom .ttf in src/fonts) for the SHYARA wordmark (navbar, footer, intro loader)
 - Backend: untouched template, not called by frontend
 
 ## Implemented (June 2026)

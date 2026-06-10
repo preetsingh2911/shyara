@@ -14,7 +14,7 @@ export const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12">
-        <a href="#main-content" data-testid="nav-logo" className="font-heading text-2xl font-black tracking-tighter">
+        <a href="#main-content" data-testid="nav-logo" className="font-logo text-2xl tracking-wide">
           SHYARA<span className="text-[#FF3333]">.</span>
         </a>
 

@@ -58,9 +58,6 @@ export const Hero = () => (
           <Word delay={0.34} className="text-[#FF3333]">
             Work.
           </Word>
-          <span className="mt-3 block text-lg font-bold tracking-tight text-[#0A0A0A]/50 sm:text-xl">
-            <Word delay={0.42}>(And Market Them So People See Them.)</Word>
-          </span>
         </h1>
 
         <motion.p
@@ -68,7 +65,7 @@ export const Hero = () => (
           data-testid="hero-subheadline"
           className="mt-6 max-w-md text-base leading-relaxed text-[#0A0A0A]/70 md:text-lg"
         >
-          Fast, conversion-focused websites — backed by the ads and social
+          Fast, conversion-focused websites, backed by the ads and social
           media that send traffic their way.
         </motion.p>
 

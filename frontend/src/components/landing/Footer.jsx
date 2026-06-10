@@ -5,7 +5,7 @@ export const Footer = () => (
   <footer data-testid="footer" className="border-t border-white/15 bg-[#0A0A0A] py-12 text-white">
     <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 md:flex-row md:items-center md:justify-between md:px-12">
       <div>
-        <p className="font-heading text-2xl font-black tracking-tighter">
+        <p className="font-logo text-2xl tracking-wide">
           SHYARA<span className="text-[#FF3333]">.</span>
         </p>
         <p className="mt-2 max-w-xs text-sm text-white/50">
