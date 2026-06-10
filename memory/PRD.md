@@ -21,7 +21,7 @@ Redesign the landing page at https://marketing.shyara.co.in/ to position **websi
 - Black social proof bar: 50+ brands | 100+ projects | 5+ years
 - Services: featured full-width web dev card (mockup image, hard shadow) + 3 muted secondary cards (App Dev, Ads 20% flat fee, Social ₹7,999/mo)
 - Portfolio: 3 browser-chrome mockup cards with scroll-on-hover effect, asymmetric offset, CTA to full portfolio
-- Process: 4-step technical grid (Discovery → Strategy & Scope → Build & Execute → Review & Grow)
+- Process: scroll-driven snaking timeline — SVG line draws itself as you scroll, connecting and activating diamond dots + step cards (zigzag on desktop, vertical line on mobile) via framer-motion useScroll/pathLength (ScrollTimeline.jsx)
 - Final CTA: WhatsApp green button + dark footer with email/phone/nav
 - Fully responsive (tested 1920px & 390px), data-testids on all interactive elements
 - Tested: 46/46 frontend checks passed (iteration_1)

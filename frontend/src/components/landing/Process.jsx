@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Search, FileText, Hammer, TrendingUp } from "lucide-react";
+import { ScrollTimeline } from "@/components/landing/ScrollTimeline";
 
 const steps = [
   {
@@ -41,28 +42,7 @@ export const Process = () => (
         </h2>
       </motion.div>
 
-      <div className="grid border-2 border-[#0A0A0A] bg-white md:grid-cols-4">
-        {steps.map((s, i) => (
-          <motion.div
-            key={s.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.12 }}
-            data-testid={`process-step-${i + 1}`}
-            className="group relative border-b-2 border-[#0A0A0A] p-8 transition-colors last:border-b-0 hover:bg-[#0A0A0A] hover:text-white md:border-b-0 md:border-r-2 md:last:border-r-0 md:p-10"
-          >
-            <span className="font-heading block text-5xl font-black tracking-tighter text-[#0A0A0A]/10 transition-colors group-hover:text-[#FF3333]">
-              0{i + 1}
-            </span>
-            <s.icon size={26} strokeWidth={2} className="mt-6 text-[#FF3333]" />
-            <h3 className="font-heading mt-4 text-xl font-black tracking-tight">{s.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-[#0A0A0A]/60 transition-colors group-hover:text-white/70">
-              {s.text}
-            </p>
-          </motion.div>
-        ))}
-      </div>
+      <ScrollTimeline steps={steps} />
     </div>
   </section>
 );
