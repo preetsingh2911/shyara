@@ -75,7 +75,7 @@ export const Navbar = () => {
 
         <span className="mx-3 hidden h-5 w-px bg-white/20 md:block" />
 
-        <nav className="flex items-center">
+        <nav className="flex flex-1 items-center justify-evenly md:flex-none md:justify-start">
           {links.map((l) => (
             <NavLink
               key={l.to}
