@@ -11,7 +11,8 @@ Redesign the landing page at https://marketing.shyara.co.in/ to position **websi
 
 ## Architecture
 - React (CRA + craco), Tailwind, framer-motion, lucide-react
-- Single route `/` in `App.js`; components in `/app/frontend/src/components/landing/` (Navbar, Hero, SocialProofBar, Services, Portfolio, Process, FinalCTA, Footer)
+- Multipage via react-router: `/` (Home: IntroLoader + Hero + SocialProofBar + FinalCTA), `/services`, `/work`, `/process` — each page = section + FinalCTA; shared Navbar (NavLink active states) + Footer; ScrollToTop on route change; intro plays once per session (sessionStorage `shyara-intro-shown`), hero delay adapts when skipped
+- Page components in `/app/frontend/src/pages/`; section components in `/app/frontend/src/components/landing/` (Navbar, Hero, SocialProofBar, Services, Portfolio, Process, ScrollTimeline, FinalCTA, Footer, IntroLoader)
 - Contact constants in `/app/frontend/src/constants/site.js`
 - Fonts: Cabinet Grotesk (headings) + Satoshi (body) via Fontshare; TAN Paradiso (custom .ttf in src/fonts) for the SHYARA wordmark (navbar, footer, intro loader)
 - Backend: untouched template, not called by frontend

@@ -78,14 +78,14 @@ export const Hero = () => {
         </motion.p>
 
         <motion.div {...rise(0.6)} className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
-          <a
-            href="#portfolio"
+          <Link
+            to="/work"
             data-testid="hero-primary-cta"
             className="group inline-flex items-center justify-center gap-2 whitespace-nowrap border-2 border-[#0A0A0A] bg-[#FF3333] px-8 py-4 font-bold uppercase tracking-wide text-white transition-all hover:-translate-y-1 hover:shadow-[5px_5px_0px_0px_#0a0a0a]"
           >
             View Our Website Portfolio
             <ArrowRight size={18} strokeWidth={2.5} className="transition-transform group-hover:translate-x-1" />
-          </a>
+          </Link>
           <a
             href={SITE.whatsappUrl}
             target="_blank"

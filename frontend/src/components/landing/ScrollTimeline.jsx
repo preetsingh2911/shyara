@@ -43,7 +43,7 @@ export const ScrollTimeline = ({ steps }) => {
   });
 
   return (
-    <div ref={ref} data-testid="process-timeline">
+    <div ref={ref} data-testid="process-timeline" className="relative">
       {/* ===== Desktop: snaking line connecting dots ===== */}
       <div ref={deskRef} className="relative hidden md:block">
         {dims.w > 0 && (
