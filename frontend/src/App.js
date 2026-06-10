@@ -1,12 +1,11 @@
 import "@/App.css";
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import Home from "@/pages/Home";
 import ServicesPage from "@/pages/ServicesPage";
 import WorkPage from "@/pages/WorkPage";
-import ProcessPage from "@/pages/ProcessPage";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -27,7 +26,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/work" element={<WorkPage />} />
-            <Route path="/process" element={<ProcessPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
         <Footer />

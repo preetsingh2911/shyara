@@ -44,7 +44,7 @@ export const Hero = () => {
 
   return (
   <section className="relative overflow-hidden">
-    <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 pb-20 pt-14 md:grid-cols-12 md:px-12 md:pb-24 md:pt-20">
+    <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 pb-20 pt-28 md:grid-cols-12 md:px-12 md:pb-24 md:pt-32">
       {/* ===== Copy ===== */}
       <div className="md:col-span-7">
         <motion.p
